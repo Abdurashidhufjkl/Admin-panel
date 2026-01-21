@@ -56,7 +56,7 @@ body {
   color: #ffffff;
 }
 
-/* ===== LOGOUT ===== */
+
 .logout__btn {
   margin-top: auto;
   background-color: #ef4444;
@@ -74,7 +74,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== DASHBOARD ===== */
+
 .dashboard {
   width: 82%;
   background-color: #f9fafb;
@@ -96,7 +96,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== BUTTON ===== */
 .add__product__btn {
   width: 150px;
   height: 45px;
@@ -114,7 +113,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ===== TABLE ===== */
+
 .table__container {
   width: 95%;
   margin: auto;
@@ -146,7 +145,6 @@ td {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* ===== ACTION BUTTONS ===== */
 .edit {
   width: 65px;
   height: 30px;
@@ -177,7 +175,7 @@ td {
   background-color: #b91c1c;
 }
 
-/* ===== MODAL ===== */
+
 .modal {
   position: fixed;
   inset: 0;
