@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+  <link rel="stylesheet" href="./page_style/product.css">  
+  <link rel="stylesheet" href="./page_style/user.css">  
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <ul class="sidebar__ul">
+      <li class="sidebar__li"><a href="pages.html">Products</a></li>
+      <li class="product__active">Users</li>
+      <li class="sidebar__li"><a href="product.html">Carts</a></li>
+    </ul>
+
+    <button class="logout" onclick="logout()">Logout</button>
+  </aside>
+
+  <section class="users">
+    <div class="users__header">
+      <h1>Users</h1>
+    </div>
+
+    <div class="users__table__box">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="usersTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<script src="product.js"></script>
+<script src="user.js"></script>
+</body>
+</html>
+
