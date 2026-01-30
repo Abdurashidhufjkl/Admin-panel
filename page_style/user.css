@@ -4,6 +4,15 @@
   background: #f9fafb;
 }
 
+.users__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+
+
 .users__header h1 {
   font-size: 28px;
   font-weight: 700;
@@ -72,5 +81,53 @@ tr:hover td {
 .delete:hover {
   background-color: #b91c1c;
 }
+
+
+
+
+.add-user-btn {
+  width: 150px;
+  height: 45px;
+  background-color: #047857;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.add-user-btn:hover {
+  background-color: #065f46;
+  transform: scale(1.05);
+}
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden { display: none; }
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  width: 320px;
+  border-radius: 12px;
+}
+
+.modal-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
 
 

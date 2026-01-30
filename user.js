@@ -1,27 +1,21 @@
+const API = "https://fakestoreapi.com/users";
 const usersTable = document.getElementById("usersTable");
+const elLogout = document.querySelector(".logout__btn");
 
-fetch("https://fakestoreapi.com/users")
-  .then((res) => res.json())
-  .then((users) => renderUsers(users));
+const modal = document.getElementById("userModal");
+const fnameInput = document.getElementById("fname");
+const lnameInput = document.getElementById("lname");
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
 
-function renderUsers(users) {
-  usersTable.innerHTML = "";
+let editId = null;
 
-  users.forEach((user) => {
-    const tr = document.createElement("tr");
 
-    tr.innerHTML = `
-      <td>${user.id}</td>
-      <td>${user.name.firstname} ${user.name.lastname}</td>
-      <td>${user.username}</td>
-      <td>${user.email}</td>
-      <td>${user.address.city}</td>
-      <td>
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-      </td>
-    `;
+elLogout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("usename");
+  window.location.href = "index.html";
+});
 
-    usersTable.appendChild(tr);
-  });
-}
+
+
