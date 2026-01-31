@@ -1,30 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Admin Products</title>
-    <link rel="stylesheet" href="./page_style/product.css" />
-    <link rel="stylesheet" href="./page_style/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/page_style/product.css">
+    <title>Admin</title>
   </head>
   <body>
     <div class="layout">
       <aside class="sidebar">
-        <h2>Admin</h2>
-        <ul>
-          <li class="sidebar__li"><a href="pages.html">Products</a></li>
-          <li class="product__active">Carts</li>
-          <li class="sidebar__li"><a href="user.html">Users</a></li>
+        <h2 class="logo">Admin</h2>
+
+        <ul class="sidebar__ul">
+          <li class="sidebar__li"><a href="pages.html">Product</a></li>
+          <li class="sidebar__li sidebar__active"><a href="#">Carts</a></li>
+          <li class="sidebar__li users__link"><a href="/user.html">Users</a></li>
         </ul>
-        <button class="logout" onclick="logout()">Logout</button>
+
+        <button class="logout__btn">Logout</button>
       </aside>
 
-      <main class="content dashboard">
-        <div class="top">
-          <h1>Products</h1>
-          <button class="add__product__btn">Add Product</button>
-        </div>
+      <main class="dashboard">
+        <header class="dashboard__header">
+          <h1 class="dashboard__title">Products</h1>
 
-        <div id="products" class="products-cards"></div>
+          <button class="add__product__btn">Add Product</button>
+        </header>
+
+        <div class="table__container">
+          <table class="table">
+            <thead>
+              <tr class="table__row1">
+                <th class="id">ID</th>
+                <th class="title">Title</th>
+                <th class="price">Price</th>
+                <th class="category">Category</th>
+                <th class="description">Dsecription</th>
+                <th class="actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productList"></tbody>
+          </table>
+        </div>
       </main>
     </div>
 
@@ -33,11 +50,12 @@
         <h3 id="modalTitle">Add Product</h3>
         <input type="text" id="title" placeholder="Title" />
         <input type="number" id="price" placeholder="Price" />
+        <input type="text" id="description" placeholder="Description" />
+        <input type="text" id="category" placeholder="Category" />
         <button id="saveProduct">Save</button>
         <button id="close">Cancel</button>
       </div>
     </div>
-    <script src="pages.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="product.js"></script>
-  </body>
-</html>

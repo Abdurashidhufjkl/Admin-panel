@@ -1,29 +1,48 @@
-const productsEl = document.getElementById("products");
+const API = "https://fakestoreapi.com/products";
+const productList = document.querySelector("#productList");
+const elLogout = document.querySelector(".logout__btn");
+const titleInput = document.querySelector("#title");
+const priceInput = document.querySelector("#price");
+const descriptionInput = document.querySelector("#description");
+const categoryInput = document.querySelector("#category");
+const usersLink = document.querySelector(".users__link");
+const modal = document.querySelector("#modal");
 
-fetch("https://fakestoreapi.com/products")
-  .then((res) => res.json())
-  .then((data) => {
-    renderProducts(data);
-  });
+elLogout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("usename");
+  window.location.href = "/index.html";
+});
 
-function renderProducts(products) {
-  productsEl.innerHTML = "";
+function fetchProducts() {
+  axios.get(API).then((res) => {
+    productList.innerHTML = "";
 
-  products.forEach((item) => {
-    const card = document.createElement("div");
-    card.className = "product-card";
+    res.data.slice(0, 10).forEach((p) => {
+      const tr = document.createElement("tr");
 
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.title}">
-      <h3>${item.title.slice(0, 45)}...</h3>
-      <div class="price">$${item.price}</div>
-      <div class="card-actions">
-        <button class="edit" onclick="editProduct(${item.id}, '${item.title}', ${item.price})">Edit</button>
-        <button class="delete">Delete</button>
-      </div>
-    `;
+      tr.innerHTML = `
+        <td>${p.id}</td>
+        <td>${p.title}</td>
+        <td>${p.price}</td>
+        <td>${p.category}</td>
+        <td>${p.description.slice(0, 20)}...</td>
+        <td class="actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </td>
+      `;
 
-    productsEl.appendChild(card);
+      tr.querySelector(".edit").addEventListener("click", () => {
+        editProduct(p);
+      });
+
+      tr.querySelector(".delete").addEventListener("click", () => {
+        deleteProduct(p.id);
+      });
+
+      productList.appendChild(tr);
+    });
   });
 }
 
@@ -34,12 +53,16 @@ document.querySelector(".add__product__btn").onclick = () => {
   editId = null;
   titleInput.value = "";
   priceInput.value = "";
+  descriptionInput.value = "";
+  categoryInput.value = "";
 };
 
-document.getElementById("saveProduct").onclick = () => {
+document.querySelector("#saveProduct").onclick = () => {
   const product = {
     title: titleInput.value,
     price: priceInput.value,
+    description: descriptionInput.value,
+    category: categoryInput.value,
   };
 
   if (editId) {
@@ -51,11 +74,13 @@ document.getElementById("saveProduct").onclick = () => {
   modal.classList.add("hidden");
 };
 
-function editProduct(id, title, price) {
+function editProduct(product) {
   modal.classList.remove("hidden");
-  titleInput.value = title;
-  priceInput.value = price;
-  editId = id;
+  titleInput.value = product.title;
+  priceInput.value = product.price;
+  descriptionInput.value = product.description;
+  categoryInput.value = product.category;
+  editId = product.id;
 }
 
 function deleteProduct(id) {
